@@ -6,16 +6,16 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static('public'));
 
 
-// Configurar Multer para almacenar archivos en memoria
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-// Ruta principal
+
 app.get('/', (req, res) => {
-  res.send('Microservicio de Metadatos de Archivos funcionando');
+  res.sendFile(__dirname + '/public/index.html');
 });
 
-// Ruta para subir archivos
+
+
 app.post('/api/fileanalyse', upload.single('upfile'), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: 'No se subió ningún archivo' });
