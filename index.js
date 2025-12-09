@@ -17,18 +17,15 @@ app.get('/', (req, res) => {
 
 
 app.post('/api/fileanalyse', upload.single('upfile'), (req, res) => {
-  if (!req.file) {
-    return res.status(400).json({ error: 'No se subió ningún archivo' });
-  }
+  if (!req.file) return res.status(400).json({ error: 'No se subió ningún archivo' });
 
-  const fileInfo = {
+  res.json({
     name: req.file.originalname,
     type: req.file.mimetype,
     size: req.file.size
-  };
-
-  res.json(fileInfo);
+  });
 });
+
 
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en el puerto ${PORT}`);
