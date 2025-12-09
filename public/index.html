@@ -20,7 +20,7 @@
     const result = document.getElementById('result');
 
     form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+      e.preventDefault(); // Evita que se recargue la página
       const formData = new FormData(form);
 
       const response = await fetch('/api/fileanalyse', {
@@ -29,7 +29,7 @@
       });
 
       const data = await response.json();
-      result.textContent = JSON.stringify(data, null, 2);
+      result.textContent = JSON.stringify(data, null, 2); // Muestra solo el JSON
     });
   </script>
 </body>
