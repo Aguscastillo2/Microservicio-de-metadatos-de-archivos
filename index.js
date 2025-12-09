@@ -3,6 +3,9 @@ const multer = require('multer');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(express.static('public'));
+
+
 // Configurar Multer para almacenar archivos en memoria
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
