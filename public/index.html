@@ -4,34 +4,21 @@
   <meta charset="UTF-8">
   <title>Microservicio de Metadatos de Archivos</title>
 </head>
-<body>
-  <h1>Subir archivo para ver metadatos</h1>
+ <body>
+      <div class="container">
+        <h1>API Project: File Metadata Microservice</h1>
 
-  <form id="uploadForm" enctype="multipart/form-data">
-    <input type="file" name="upfile" required>
-    <button type="submit">Subir archivo</button>
-  </form>
-
-  <h2>Resultado:</h2>
-  <pre id="result"></pre>
-
-  <script>
-    const form = document.getElementById('uploadForm');
-    const result = document.getElementById('result');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault(); // Evita recargar la página
-      const formData = new FormData(form);
-
-      const response = await fetch('/api/fileanalyse', {
-        method: 'POST',
-        body: formData
-      });
-
-      const data = await response.json();
-      result.textContent = JSON.stringify(data, null, 2); // Muestra solo JSON
-    });
-  </script>
-</body>
+        <h2>Usage:</h2>
+        <p>
+          Please Upload a File ...
+        </p>
+        <div class="view">
+          <h3 id="output"></h3>
+          <form enctype="multipart/form-data" method="POST" action="/api/fileanalyse">
+            <input id="inputfield" type="file" name="upfile">
+            <input id="button" type="submit" value="Upload">
+          </form>
+        </div>
+      </div>
+   </body>
 </html>
-
